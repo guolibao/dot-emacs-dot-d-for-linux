@@ -24,7 +24,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smex htmlize plantuml-mode highlight-symbol auctex use-package))))
+    (flycheck-clang-analyzer flycheck-irony irony-eldoc company-irony company-c-headers flycheck company smex htmlize plantuml-mode highlight-symbol auctex use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
