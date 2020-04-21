@@ -292,6 +292,25 @@ Systax highlighting for documents exported to HTML
   :ensure t)
 #+END_SRC
 
+** replace “” to <>
+For example to replace user c header to system c header include, #include "header"= to =#include <header>
+#+BEGIN_SRC emacs-lisp
+  (defun guo/replace-double-quotes-with-angle-brackets ()
+    (interactive)
+    (move-beginning-of-line 1)
+    (set-mark-command nil)
+    (move-end-of-line 1)
+    (replace-regexp "\"\\(.+\\)\"" "<\\1>" nil
+                    (if
+                        (use-region-p)
+                        (region-beginning))
+                    (if
+                        (use-region-p)
+                        (region-end))
+                    nil))
+(global-set-key (kbd "\C-x\C-kA") 'guo/replace-double-quotes-with-angle-brackets)
+#+END_SRC
+
 * Add Emacs-lisp template in org mode
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'org-structure-template-alist
@@ -328,7 +347,7 @@ Systax highlighting for documents exported to HTML
 #+END_SRC
 
 
-==========Below setting may not be useful===============
+* ==========Below setting may not be useful===============
 * company mode
 ** company mode package
 company mode normal install and setting
@@ -506,6 +525,26 @@ To complete project local, use company-c-headers-path-user and put it in .dir-lo
     (require 'flycheck-clang-analyzer)
     (flycheck-clang-analyzer-setup)))
 #+END_SRC
+* ========================================================
 
+* magit
 
-========================================================
+magit-file-mode-map define some short-cut key for magit as follows:
+
+| Short-Cut key | magit command        |
+|---------------+----------------------|
+| C-xg          | magit-status         |
+|---------------+----------------------|
+| C-x\M-g       | magit-dispatch-popup |
+|---------------+----------------------|
+| C-c\M-g       | magit-file-popup     |
+
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t
+  :config
+  (setq magit-push-always-verify nil)
+  (setq magit-commit-summary-max-length 50))
+
+;; (define-key magit-file-mode-map (kbd "\C-x\C-g") 'magit-file-popup)
+#+END_SRC
