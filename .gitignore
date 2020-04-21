@@ -2,3 +2,7 @@ elpa/**
 auto-save-list/**
 network-security.data
 config.el
+ido.last
+irony/**
+smex-items
+transient/**
