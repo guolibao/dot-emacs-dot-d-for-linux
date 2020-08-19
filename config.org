@@ -263,7 +263,7 @@ When align-regexp, using spaces instead of tabs.
                                                            (C . t)
                                                            (gnuplot . t)
                                                            (R . t)
-                                                           (sh . t)
+                                                           (shell . t)
                                                            (ditaa . t)
                                                            (calc . t)
                                                            (latex . t)
